@@ -12,8 +12,16 @@ As you can see, the animation has four frames but we have to double the sprite f
 In the code the sprite looks like this:
 
     byte walk[8][8] = {         // 4 frames, 2 bytes wide (12pixels), 8 pixels high, sprite animation
+    { 70,70,68,78,85,74,74,81 },
+    { 64,64,64,64,64,64,64,64 },
+    { 64,65,65,65,67,69,66,68 },
+    { 64,96,96,64,112,64,112,80 },
+    { 64,64,64,64,64,64,64,64 },
+    { 88,88,80,120,112,88,120,80 },
+    { 64,64,64,64,64,64,64,64 },
+    { 88,88,80,120,112,88,84,84 }
 
-Since we saved some computation time with the above trick, at the expense of memory, we are going to calculate the reverting of the sprite (when moving from right to left). This is done with some code that removes the first two bits that don't contain pixel data, then splits the remaining six bits into two 3 bits and uses a map called `flipmap` to revert each of them:
+Since we saved some computation time with the above trick, at the expense of memory, we are going to calculate the flipping of the sprite (when moving from right to left). This is done with a bit of code that removes the first two bits that don't contain pixel data, then splits the remaining six bits into two 3 bits and uses a map called `flipmap` to revert each of them:
 
     byte flipmap[8] = { 0,4,2,6,1,5,3,7 };
     // flip the six bits holding the pixels
