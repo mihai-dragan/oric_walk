@@ -112,7 +112,7 @@ void move_left() {
         faceright=0;
         pos=pos+1;
     }
-    if(pos>0) {
+    if(pos>1) {
         pos=pos-1;
         for(i=0;i<4;i++) {
                 draw_sprR(walk[i*2],0xa001+pos);
